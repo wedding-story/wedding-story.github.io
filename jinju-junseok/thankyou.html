@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>모바일 감사장</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,target-densitydpi=medium-dpi" />
+<meta name="format-detection" content="telephone=no" />
+<meta property="og:type" content="website">
+<meta property="og:image" content=""> <!-- Link Image -->
+<meta property="og:title" content="감사장"> <!-- Link Title -->
+<meta property="og:description" content=""> <!-- Link Text -->
+<meta property="og:url" content=""> <!-- Link URL -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/kopubbatang.css" /> <!-- font-family: 'KoPub Batang'; -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/nanummyeongjo.css" /> <!-- font-family: 'Nanum Myeongjo'; -->
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" /> <!-- font-family: 'Noto Sans KR'; -->
+<style>
+@charset "euc-kr";
+
+/*@import url("notosanskr.css");  /* font-family:'Noto Sans KR'; */
+/*@import url("nanummyeongjo.css");  /* font-family:'Nanum Myeongjo'; */
+/*@import url("campton.css");  /* font-family:'campton'; */
+
+
+/* default */
+*{box-sizing:border-box;}
+*:after,
+*:befroe{box-sizing:border-box;}
+html, body {width:100%;height:100%;}
+html {font-size:62.5%;overflow-y:scroll;}
+body {margin:0;padding:0;font-size:1.2rem;line-height:1.5;color:#111;word-wrap:break-word;word-break:break-all;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+html, body, blockquote, caption, dd, div, dl, dt, fieldset, form, frame, h1, h2, h3, h4, h5, h6, hr,
+iframe, input, legend, li, object, ol, p, pre, q, select, table, textarea, ul, tr, td, span { margin:0; padding:0; font-family:inherit; }
+fieldset, img { border:0 none; vertical-align:top; }
+h1, h2, h3, h4, h5, h6 { font-style:normal;}
+hr { display:none; height:0}
+ul,ol,li,dd,dt {list-style:none}
+em {font-style:normal;}
+table { width:100%;border-collapse:collapse; border:0; empty-cells:show;}
+button{border: 0;padding:0;margin: 0;}
+p { display:block}
+ul, span { display:inline-block}
+
+
+/* common */
+a {color:#555;display:block;}
+a:hover { font-weight:bold;text-decoration:none;}
+img {max-width:100%;vertical-align:top;font-size:0px;border:0 none;}
+/* ?겕濡?,?븞?뱶濡쒖씠?뱶 ?씤?뭼諛뺤뒪 input[type="checkbox"]{-webkit-appearance:none;-webkit-border-radius:0}*/
+input,button,textarea {border-radius:0;vertical-align:top;}
+input:checked[type="checkbox"]{-webkit-appearance:checkbox}
+input[type=text], input[type=password], input[type=submit], input[type=search], input[type=file], textarea, select { box-sizing:border-box;-webkit-appearance:none;}
+button,input[type="button"],input[type="submit"],input[type="reset"],input[type="file"]{-webkit-appearance:button;border-radius:0; border-radius:0px 0px;}
+textarea {height:100px; line-height:30px; border:1px solid #ccc; background:#fff; padding:10px;}
+em, address {font-style:normal;}
+table { width:100%; position:relative;}
+caption {position:absolute; visibility:hidden; width:0; height:0; overflow:hidden; font-size:0;}
+.skipNAvi, legend  { position:absolute; visibility:hidden; line-height:0; width:0; height:0; font-size:0; left:-5000px; top:-5000px;}
+address, article, aside, blockquote, body, center, dd, dir, div, dl, dt, figure, figcaption, footer, form, h1, h2, h3, h4, h5, h6, header,
+hgroup, html, legend, listing, menu, nav, ol, p, plaintext, pre,section, summary, ul, xmp { display: block; }
+hr{height:0;display:none}
+
+input::placeholder,
+textarea::placeholder{
+    color:#999;
+}
+
+
+/*=================*/
+
+
+/* common.css는 모바일 청첩장 공통영역 정의합니다. */
+html{-webkit-text-size-adjust:none; -moz-text-size-adjust:none; -ms-text-size-adjust:none; font-size:4.445vmin;}
+html, body{width:100%; height:100%;}
+body{background-size:100% auto;}
+
+#menu-overlay{display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#000; opacity:.7; z-index:998;}
+
+.contain{padding:0 1rem;}
+.contain:after{content:''; display:block; clear:both;}
+
+.tb{display:table; width:100%;}
+.ib{display:inline-block; vertical-align:top;}
+
+/* popup */
+.pop-wrap{display:none; z-index:1003; position:fixed; left:0; top:50%; width:100%; box-sizing:border-box;}
+.pop-inner{position:relative; box-shadow:0 8px 8px rgba(0, 0, 0, .2);}
+.pop-head{position:relative; background:#fff;}
+.pop-body{position:relative; background:#fff; padding:1.875rem 0;}
+
+.messageDelete .pop-head{font-family:"Noto Sans KR"; font-size:1.125rem; font-weight:400; line-height:3.125rem;text-align:center; color:#111; border-bottom:1px solid #5b1eaa;}
+.messageDelete .pop-body{padding:0;}
+.messageDelete .form{}
+.messageDelete .form .con{padding:2.5rem 0;}
+.messageDelete .form .group{padding:0 2rem;}
+.messageDelete .form .input{width:100%; height:2.5rem; background:#fff; border:1px solid #eee; font-family:"Noto Sans KR"; font-size:0.813rem; font-weight:300; color:#111; padding:0 0.750rem;}
+.messageDelete .buttons:after{content:''; display:block; clear:both;}
+.messageDelete .buttons .btn{display:block; float:left; width:50%; background:#fff; font-family:"Noto Sans KR"; font-size:1rem; font-weight:400; line-height:3.125rem; text-align:center; color:#111; border-top:1px solid #eee; border-left:1px solid #eee;text-decoration:none;}
+.messageDelete .buttons .btn:first-child{border-left:0;}
+.messageDelete .close-btn{position:absolute; right:0; top:0; display:block; width:3.375rem; height:3.125rem; background:url("/mobile/new_m/mthank/images/common/message_delete_02.png") 50% 50% no-repeat; background-size:0.875rem; font-size:0; line-height:0;}
+
+/* paging */
+.paging {position:relative; width:100%; background:#fff; text-align:center; padding:1.250rem 4.250rem; color:#111; font-size:0.750rem; line-height:2.625rem; box-sizing:border-box;
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	-ms-flex-direction: row;
+	flex-direction: row;
+}
+.paging:after{content:''; display:block; clear:both;}
+.paging a {display:inline-block; text-align:center; border:1px solid transparent; margin:0; line-height:2.625rem; color:#999; height:2.625rem; font-family:"campton"; text-decoration: none; box-sizing:content-box;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+.paging a.on {color:#111}
+.paging a.prev {position:absolute; left:1rem; top:1.250rem; float:left; width:2.625rem; border:1px solid #eee; font-family:"Nanum Gothic";}
+.paging a.next {position:absolute; right:1rem; top:1.250rem; float:right; width:2.625rem; border:1px solid #eee; font-family:"Nanum Gothic";}
+
+/* 공통 레이아웃 */
+.visual-section .vertical-center{
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	-webkit-box-orient: vertical;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+.visual-section .vertical-top{
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	-webkit-box-orient: vertical;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	position:relative;
+	text-align:center;
+}
+.visual-section .vertical-item{
+	flex-shrink:0;
+}
+
+.greeting-section{
+	padding:3.125rem 0;
+}
+.greeting-section .sec-txt{
+	margin-bottom:2.813rem;
+	font-size:0.813rem;
+	font-weight:300;
+	line-height:1.5rem;
+	color:#111;
+    text-align:center;
+    white-space:pre-wrap;
+}
+.greeting-section .info{
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	-ms-flex-direction:row;
+	flex-direction:row;
+	font-size:0;
+	line-height:0;
+	text-align:center;
+}
+.greeting-section .info .f-item{
+	flex-shrink:0;
+}
+.greeting-section .info .f-item.first{
+	max-width:calc(100% - 3.500rem);
+}
+.greeting-section .info .s1{
+	display:inline-block;
+	vertical-align:top;
+	margin-left:1.250rem;
+	width:2.250rem;
+	height:2.250rem;
+	font-size:0.688rem;
+	font-weight:300;
+	line-height:2.250rem;
+	text-align:center;
+	color:#fff;
+	border-radius:50%;
+}
+.greeting-section .info .row{
+	display:table-row;
+}
+.greeting-section .info p{
+	display:table-cell;
+	vertical-align:top;
+}
+.greeting-section .info .honju{
+	font-size:0;
+	text-align:right;
+}
+.greeting-section .info .honju .gt-span{
+	display:inline-block;
+	vertical-align:top;
+	font-size:0.813rem;
+	font-weight:400;
+	line-height:1.5rem;
+}
+.greeting-section .info .honju .gt-span.deceased-on{
+	position:relative;
+	padding-left:1.1rem;
+}
+.greeting-section .info .honju .gt-span.deceased-on:after{
+	content:'故';
+	position:absolute;
+	left:0.188rem; top:0;
+	display:block;
+	font-family:inherit;
+	font-size:inherit;
+	font-weight:inherit;
+	line-height:inherit;
+	color:#111;
+}
+.greeting-section .info .honju .bul{
+	position:relative;
+	width:0.750rem;
+	height:1.5rem;
+	overflow:hidden;
+}
+.greeting-section .info .honju .bul:after{
+	content:'.';
+	position:absolute;
+	left:0; top:0;
+	width:100%;
+	display:block;
+	font-size:0.813rem;
+	font-weight:400;
+	line-height:1;
+	text-align:center;
+}
+.greeting-section .info .default{
+	height:1.5rem;
+	font-size:0.625rem;
+	font-weight:300;
+	line-height:1.625rem;
+}
+.greeting-section .info .gwangye{
+	height:1.5rem;
+	padding-left:0.188rem;
+	font-size:0.625rem;
+	font-weight:300;
+	line-height:1.625rem;
+}
+.greeting-section .info .slsb{
+	padding-left:0.313rem;
+	font-size:1rem;
+	font-weight:400;
+	line-height:1.5rem;
+	text-align:left;
+}
+
+.foot-share{
+	padding:1.875rem 0 1.563rem;
+	background:#333;
+	border-bottom:1px solid #222;
+	text-align: center;
+}
+.foot-share ul{
+	font-size:0;
+	line-height:0;
+}
+.foot-share li{
+	display:inline-block;
+	vertical-align:top;
+	width:3.125rem;
+	padding:0 0.938rem;
+	box-sizing:content-box;
+}
+.foot-share a{
+	position:relative;
+	display:block;
+	padding-top:3.563rem;
+	font-family:"Noto Sans KR";
+	font-size:0.688rem;
+	font-weight:300;
+	line-height:0.875rem;
+	text-align:center;
+	color:#aaa;
+	text-decoration:none;
+}
+.foot-share a:after{
+	content:'';
+	display:block;
+	position: absolute;
+	left: 50%; top: 0;
+	margin-left:-1.563rem;
+	width:3.125rem;
+	height:3.125rem;
+	background-position:0 0;
+	background-repeat:no-repeat;
+	background-size:3.125rem;
+}
+.foot-share .kakao:after{
+	background-image:url("/mobile/new_m/mthank/images/common/footer_kakao.png");
+}
+.foot-share .facebook:after{
+	background-image:url("/mobile/new_m/mthank/images/common/footer_facebook.png");
+}
+.foot-share .Phone_2g:after{
+	background-image:url("/mobile/new_m/mthank/images/common/footer_2g.png");
+}
+.foot-logo{
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:flex;
+	height:3.688rem;
+	align-items: center;
+	justify-content: center;
+	-webkit-box-orient: vertical;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	background:#333;
+	font-size:0;
+	line-height:0;
+	text-align:center;
+}
+.foot-logo:after{
+	content:'';
+	display:block;
+	width:3.469rem;
+	height:0.906rem;
+	margin:0 auto;
+	background:url("/mobile/new_m/mthank/images/common/footer_logo.png") 0 0 no-repeat;
+	background-size:3.469rem auto;
+}
+
+/* ******************************** 미디어 쿼리 ******************************** */
+ /* Landscape mode (가로형 디바이스) */
+ @media only screen and (orientation: landscape) {
+	html{font-size:4.445vmax !important;}
+
+	.visual-section{
+		height:auto !important;
+	}
+}
+
+/* Portrait mode (세로형 디바이스) */
+@media only screen and (orientation: portrait) {
+
+}
+
+/* DeskTop */
+@media all and (min-width:720px) {
+	html{font-size:32px !important;}
+	html, body{max-width:720px; margin:0 auto;}
+}
+
+@media all and (max-width:360px) {
+
+}
+
+/* ******************************** 미디어 쿼리 ******************************** */
+
+/* layout.css는 모바일 청첩장 각 레이아웃을 정의합니다. */
+
+/* ********************* 1번 템플릿 ********************* */
+.mthank_04{font-family:"Noto Sans KR", sans-serif, 'helvetica', serif, 'AppleGothic';}
+.mthank_04 .visual-section{background:url("/mobile/new_m/mthank/images/mthank_04/bg_01.png") right top 0.625rem no-repeat; background-size:8.250rem auto;}
+.mthank_04 .vertical-top{padding:0 1rem;}
+.mthank_04 .vertical-item{width:100%;}
+.mthank_04 .vertical-item.tit{padding:2.5rem 0 1.438rem; text-align:left;}
+.mthank_04 .vertical-item.tit img{width:9.938rem;}
+.mthank_04 .vertical-item.photo{text-align:center;}
+.mthank_04 .greeting-section{background:url("/mobile/new_m/mthank/images/mthank_04/bg_02.png") left top 14.063rem no-repeat; background-size:auto 9.188rem;}
+.mthank_04 .greeting-section .sec-tit{margin-bottom:2.188rem; font-size:1.125rem; font-weight:400; line-height:1; text-align:center; color:#f46f9e;}
+.mthank_04 .greeting-section .sec-tit span{display:inline-block; vertical-align:top; padding-bottom:0.625rem; border-bottom:1px solid #f46f9e;}
+
+
+
+/* ********************* 2번 템플릿 ********************* */
+.mthank_05{font-family:"Nanum Myeongjo", sans-serif, 'helvetica', serif, 'AppleGothic'; background:url("/mobile/new_m/mthank/images/mthank_05/bg_01.png") 0 0 repeat-y; background-size:100% auto;}
+.mthank_05 .visual-section{padding:3.125rem 1rem 0;}
+.mthank_05 .vertical-top{padding:3.250rem 0 0.5rem;}
+.mthank_05 .vertical-item{width:100%;}
+.mthank_05 .vertical-item.tit{z-index:10; position:absolute; left:0; top:0; width:100%; text-align:center;}
+.mthank_05 .vertical-item.tit img{width:6.125rem;}
+.mthank_05 .vertical-item.photo{position:relative; text-align:center;}
+.mthank_05 .vertical-item.photo:after{content:''; position:absolute; left:-0.5rem; top:-0.5rem; right:-0.5rem; bottom:-0.5rem; display:block; background:url("/mobile/new_m/mthank/images/mthank_05/visual_bg.png") 0 0 no-repeat; background-size:cover;}
+.mthank_05 .greeting-section .sec-tit{margin-bottom:2.188rem; font-size:1rem; font-weight:400; line-height:1; text-align:center; color:#5eb984;}
+
+
+
+/* ********************* 3번 템플릿 ********************* */
+.mthank_06{font-family:"Nanum Myeongjo", sans-serif, 'helvetica', serif, 'AppleGothic'; padding:12.188rem 0 0 0; background:url("/mobile/new_m/mthank/images/mthank_06/bg_01.jpg") 0 0 no-repeat; background-size:100% auto;}
+.mthank_06 .visual-section{padding:0 2.250rem 1.750rem;}
+.mthank_06 .vertical-item{width:100%;}
+.mthank_06 .greeting-section{padding:3.125rem 2.250rem;}
+.mthank_06 .greeting-section .info{justify-content:flex-start}
+.mthank_06 .greeting-section .sec-txt{text-align:left;}
+
+
+
+/* ********************* 4번 템플릿 ********************* */
+.mthank_07{font-family:"Nanum Myeongjo", sans-serif, 'helvetica', serif, 'AppleGothic'; background:#d4dce2;}
+.mthank_07 .visual-section{position:relative; padding:1rem 1rem 0;}
+.mthank_07 .visual-section:after{content:''; z-index:-1; position:absolute; left:0; top:0; right:0; padding-bottom:100%; display:block; background:#b8c5ce;}
+.mthank_07 .vertical-top{padding:4.313rem 3.375rem 3.375rem; border:2px solid #9baab5;}
+.mthank_07 .vertical-item{width:100%;}
+.mthank_07 .vertical-item.tit{margin-bottom:2.813rem;}
+.mthank_07 .vertical-item.tit img{width:13.750rem;}
+.mthank_07 .greeting-section .sec-tit{margin-bottom:2.813rem; text-align:center;}
+.mthank_07 .greeting-section .sec-tit img{width:9.688rem;}
+
+
+
+/* ********************* 5번 템플릿 ********************* */
+.mthank_08{font-family:"Nanum Myeongjo", sans-serif, 'helvetica', serif, 'AppleGothic';}
+.mthank_08 .visual-section{padding:2.250rem 0 2rem;}
+.mthank_08 .vertical-center{position:relative; height:29.375rem;}
+.mthank_08 .vertical-center:after{content:''; z-index:-1; position:absolute; left:2.250rem; top:0; right:2.250rem; display:block; height:29.375rem; background:url("/mobile/new_m/mthank/images/mthank_08/visual_bg.png") 0 0 no-repeat; background-size:100% auto;}
+.mthank_08 .vertical-item{width:100%;}
+.mthank_08 .vertical-item.photo img{width:100%;}
+.mthank_08 .greeting-section{padding:2rem 2.250rem 3.125rem;}
+.mthank_08 .greeting-section .info{justify-content:flex-start}
+.mthank_08 .greeting-section .sec-tit{margin-bottom:1.563rem; padding:1.5rem 0; border-top:1px solid #e4e4e4; border-bottom:1px solid #e4e4e4; font-size:0.938rem; font-weight:400; line-height:1; color:#8e7e75;}
+.mthank_08 .greeting-section .sec-txt{text-align:left;}
+
+
+
+/* ********************* 6번 템플릿 ********************* */
+.mthank_09{font-family:"Noto Sans KR", sans-serif, 'helvetica', serif, 'AppleGothic';}
+.mthank_09 .vertical-item{width:100%;}
+.mthank_09 .vertical-item.tit{padding:3.750rem 0 1.875rem; text-align:center;}
+.mthank_09 .vertical-item.tit img{width:17.375rem;}
+.mthank_09 .greeting-section{position:relative; z-index:10; margin-top:-1.875rem; padding-top:0;}
+.mthank_09 .greeting-section .sec-tit{margin-bottom:2.813rem;}
+
+
+
+/* ********************* 7번 템플릿 ********************* */
+.mthank_10{font-family:"Nanum Myeongjo", sans-serif, 'helvetica', serif, 'AppleGothic'; background:#eaeaea;}
+.mthank_10 .vertical-item{width:100%;}
+.mthank_10 .greeting-section{position:relative; z-index:10; margin:0 1rem 1rem; margin-top:-4.375rem; padding:0.813em 0.813rem 3.438rem; background:rgba(255, 255, 255, .8);}
+.mthank_10 .greeting-section:after{content:''; display:block; position:absolute; left:0.750rem; top:0.750rem; right:0.750rem; bottom:0.750rem; border:1px solid #2f8994; opacity:0.8;}
+.mthank_10 .greeting-section .sec-tit{margin-top:-0.813em; margin-bottom:0.938rem; text-align:center;}
+.mthank_10 .greeting-section .sec-tit img{width:11.781rem;}
+
+
+
+/* ********************* 8번 템플릿 ********************* */
+.mthank_11{font-family:"Nanum Myeongjo", sans-serif, 'helvetica', serif, 'AppleGothic';}
+.mthank_11 .vertical-item{width:100%;}
+.mthank_11 .vertical-item.photo{padding-top:1.250rem;}
+.mthank_11 .vertical-item.tit{padding-top:1.250rem;}
+
+
+
+/* ********************* 9번 템플릿 ********************* */
+.mthank_13{font-family:"Nanum Myeongjo", sans-serif, 'helvetica', serif, 'AppleGothic';}
+.mthank_13 .visual-section{}
+.mthank_13 .vertical-item{width:100%;}
+.mthank_13 .vertical-item.photo{padding-top:2.500rem;}
+.mthank_13 .vertical-item.con{padding-bottom:2.250rem;}
+.mthank_13 .vertical-item.con .info{padding:1rem 0; font-family:"Noto Sans KR"; font-size:0.750rem; font-weight:200; line-height:1.313rem; color:#0062d0; letter-spacing:0.05em;}
+.mthank_13 .vertical-item.con .thank{padding:2.500rem 0 5rem;}
+.mthank_13 .vertical-item.con .thank img{width:1.125rem;}
+.mthank_13 .vertical-item.con .txt{font-family:"Noto Sans KR"; font-size:0.688rem; font-weight:200; line-height:0.938rem; color:#010101;}
+.mthank_13 .greeting-section{padding:6.250rem 2.250rem; background:#d9e5f5;}
+.mthank_13 .greeting-section .box{position:relative; padding:3.438rem 0; background:#fff;}
+.mthank_13 .greeting-section .box:after,
+.mthank_13 .greeting-section .box:before{content:''; display:block;}
+.mthank_13 .greeting-section .box:after{position:absolute; left:-1.625rem; top:-4.375rem; width:19.750rem; height:7.188rem; background:url("/mobile/new_m/mthank/images/mthank_13/greeting_01.png") 0 0 no-repeat; background-size:19.750rem auto;}
+.mthank_13 .greeting-section .box:before{position:absolute; right:-2.250rem; bottom:-5.250rem; width:18.000rem; height:7.688rem; background:url("/mobile/new_m/mthank/images/mthank_13/greeting_02.png") 0 0 no-repeat; background-size:18.000rem auto;}
+.mthank_13 .greeting-section .sec-txt{color:#012e61;}
+.mthank_13 .greeting-section .info{color:#012e61;}
+
+
+
+/* ********************* 10번 템플릿 ********************* */
+.mthank_14{font-family:"Nanum Myeongjo", sans-serif, 'helvetica', serif, 'AppleGothic'; background:url("/mobile/new_m/mthank/images/mthank_14/bg_01.png") 0 0 repeat-y; background-size:100% auto;}
+.mthank_14 .vertical-item{width:100%;}
+.mthank_14 .vertical-item.tit{padding:5.000rem 0 2.500rem; text-align:center;}
+.mthank_14 .vertical-item.tit img{width:9.688rem;}
+.mthank_14 .vertical-item.photo img{width:100%;}
+
+
+
+/* ********************* 11번 템플릿 ********************* */
+.mthank_15{font-family:"Nanum Myeongjo", sans-serif, 'helvetica', serif, 'AppleGothic';}
+.mthank_15 .visual-section{padding:2.250rem 0 0;}
+.mthank_15 .vertical-item{width:100%;}
+.mthank_15 .greeting-section{padding:4.063rem 2.250rem;}
+.mthank_15 .greeting-section .info{justify-content:flex-start}
+.mthank_15 .greeting-section .sec-txt{text-align:left;}
+
+
+
+/* ********************* 12번 템플릿 ********************* */
+.mthank_16{font-family:"Nanum Myeongjo", sans-serif, 'helvetica', serif, 'AppleGothic';}
+.mthank_16 .visual-section{padding:1rem;}
+.mthank_16 .visual-section .vertical-top{padding:6.250rem 0 5.625rem; height:100%; text-align:center; border:0.125rem solid #d2a3a1;}
+.mthank_16 .visual-section .vertical-item{width:100%;}
+.mthank_16 .visual-section .vertical-item.tit{margin-bottom:5rem; padding-left:1.125rem;}
+.mthank_16 .visual-section .vertical-item.tit img{width:3.5rem;}
+.mthank_16 .visual-section .vertical-item.info .p1{margin-bottom:1.375rem; font-size:0;}
+.mthank_16 .visual-section .vertical-item.info .p1 .vs-span{display:inline-block; vertical-align:bottom; font-size:1rem; font-weight:400; line-height:1; color:#414042; letter-spacing:0.2em;}
+.mthank_16 .visual-section .vertical-item.info .p1 .bar{margin:0 0.438rem; font-size:0.750rem;}
+.mthank_16 .visual-section .vertical-item.info .p2{font-size:0.750rem; font-weight:400; line-height:1.125rem; color:#db7773; letter-spacing:0.1em;}
+
+
+
+/* ********************* 13번 템플릿 ********************* */
+.mthank_17{font-family:"Nanum Myeongjo", sans-serif, 'helvetica', serif, 'AppleGothic';}
+.mthank_17 .visual-section{}
+.mthank_17 .vertical-top{}
+.mthank_17 .vertical-item{width:100%;}
+.mthank_17 .vertical-item.tit{padding:1.875rem 0 1.250rem;}
+.mthank_17 .vertical-item.photo{padding:0 2.250rem;}
+.mthank_17 .vertical-item.con{padding:2.500rem 2.250rem 0;}
+.mthank_17 .vertical-item.con .info .p1{margin-bottom:1.250rem; font-size:0;}
+.mthank_17 .vertical-item.con .info .p1 .vs-span{display:inline-block; vertical-align:top; font-size:0.938rem; font-weight:400; line-height:1.688rem; color:#cfad65; letter-spacing:0.2em;}
+.mthank_17 .vertical-item.con .info .p1 .bar{margin:0 1.375rem; width:2.438rem; height:1.688rem; background:url("/mobile/new_m/mthank/images/mthank_17/visual_bul.png") 50% 0 no-repeat; background-size:2.438rem auto;}
+.mthank_17 .vertical-item.con .info .p2{position:relative; margin-top:1.250rem; font-size:0.625rem; line-height:0.938rem; color:#cfad65; overflow:hidden; letter-spacing:0;}
+.mthank_17 .vertical-item.con .info .p2:after{content:''; position:absolute; left:0; top:50%; display:block; width:100%; height:1px; background:#cfad65;}
+.mthank_17 .vertical-item.con .info .p2 .vs-span{position:relative; z-index:10; padding:0 1.250rem; background:#fff; white-space:nowrap;}
+.mthank_17 .greeting-section .sec-tit{margin-bottom:2.813rem; font-size:1.125rem; line-height:1; text-align:center; color:#cfad65;}
+
+
+
+/* ********************* 14번 템플릿 ********************* */
+.mthank_18{font-family:"Noto Sans KR", sans-serif, 'helvetica', serif, 'AppleGothic'; background:#eee;}
+.mthank_18 .vertical-item{width:100%;}
+.mthank_18 .vertical-item.tit{padding:1.125rem 0; text-align:center; background:#f8f8f8;}
+.mthank_18 .vertical-item.tit img{width:8.375rem;}
+.mthank_18 .vertical-item.head{position:relative; padding:0.813rem 1.250rem; background:#fff;}
+.mthank_18 .vertical-item.head:after{content:''; position:absolute; right:1.250rem; top:50%; margin-top:-0.125rem; display:block; width:1.375rem; height:0.250rem; background:url("/mobile/new_m/mthank/images/mthank_18/visual_dot.png") 0 0 no-repeat; background-size:1.375rem auto;}
+.mthank_18 .vertical-item.head .thumb{float:left; width:2.188rem; height:2.188rem; background-position:50% 50%; background-size:cover; background-repeat:no-repeat; border-radius:50%;}
+.mthank_18 .vertical-item.head .name{float:left; margin-left:0.750rem; font-size:0;}
+.mthank_18 .vertical-item.head .name .vs-span{display:inline-block; vertical-align:top; font-size:0.813rem; font-weight:500; line-height:2.188rem; color:#090909;}
+.mthank_18 .vertical-item.head .name .vs-span.bar{margin:0 0.250rem;}
+.mthank_18 .vertical-item.photo img{width:100%;}
+.mthank_18 .vertical-item.con{background:#fff; text-align:left;}
+.mthank_18 .vertical-item.con .likes{margin-bottom:0.375rem; padding:0 1.375rem; font-size:0;}
+.mthank_18 .vertical-item.con .likes .vs-span{font-size:0.875rem; font-weight:500; line-height:1; color:#090909;}
+.mthank_18 .vertical-item.con .likes .vs-span:first-child{margin-right:0.688rem;}
+.mthank_18 .vertical-item.con .info{padding:0 1.375rem 1.563rem;}
+.mthank_18 .vertical-item.con .info .name{display:table-cell; vertical-align:top; font-size:0;}
+.mthank_18 .vertical-item.con .info .name .vs-span{display:inline-block; vertical-align:top; font-size:0.875rem; font-weight:500; line-height:1.313rem; color:#090909;}
+.mthank_18 .vertical-item.con .info .name .vs-span.bar{padding:0 0.250rem;}
+.mthank_18 .vertical-item.con .info .hash{display:table-cell; vertical-align:top; padding:0 0 0 0.625rem; overflow:hidden;}
+.mthank_18 .vertical-item.con .info .hash ul{margin:0 -0.250rem 0 -0.250rem;}
+.mthank_18 .vertical-item.con .info .hash ul:after{content:''; display:block; clear:both;}
+.mthank_18 .vertical-item.con .info .hash li{float:left; padding:0 0.250rem; font-size:0.875rem; font-weight:400; line-height:1.313rem; color:#ff7b79;}
+.mthank_18 .greeting-section{margin-top:0.625rem; background:#fff;}
+.mthank_18 .greeting-section .sec-tit{margin-bottom:2.813rem; font-size:1.125rem; font-weight:400; line-height:1; text-align:center; color:#ff7b79;}
+
+
+
+/* ********************* 15번 템플릿 ********************* */
+.mthank_19{font-family:"Nanum Myeongjo", sans-serif, 'helvetica', serif, 'AppleGothic';}
+.mthank_19 .visual-section .vertical-top{padding:3.750rem 0 0;}
+.mthank_19 .visual-section .vertical-item{width:100%;}
+.mthank_19 .visual-section .vertical-item.tit{margin-bottom:3.750rem; padding-top:1.563rem; background:url("/mobile/new_m/mthank/images/mthank_19/visual_tit.png") top 1px center no-repeat; background-size:3.938rem auto;}
+.mthank_19 .visual-section .vertical-item.tit .p1{padding-left:0.375rem; font-size:0;}
+.mthank_19 .visual-section .vertical-item.tit .vs-span{position:relative; font-size:1rem; font-weight:400; line-height:1; color:#111; letter-spacing:0.625em;}
+.mthank_19 .visual-section .vertical-item.tit .bar{font-size:0.875rem;}
+.mthank_19 .visual-section .vertical-item.photo{text-align:center;}
+.mthank_19 .visual-section .vertical-item.photo img{width:17.875rem;}
+.mthank_19 .visual-section .vertical-item.info{margin-top:3.750rem;}
+.mthank_19 .visual-section .vertical-item.info .p1{margin-bottom:1rem; line-height:0;}
+.mthank_19 .visual-section .vertical-item.info .p1 img{height:1rem;}
+.mthank_19 .visual-section .vertical-item.info .dday .ib{ position:relative; padding:1px 0.188rem 0; font-size:0.688rem; font-weight:400; line-height:1.313rem; color:#70a257; letter-spacing:0.125em; white-space:nowrap;}
+.mthank_19 .visual-section .vertical-item.info .dday .ib:after,
+.mthank_19 .visual-section .vertical-item.info .dday .ib:before{content:''; display:block; width:100%; height:1px; background-color:#70a257;}
+.mthank_19 .visual-section .vertical-item.info .dday .ib:after{position:absolute; left:0; top:0;}
+.mthank_19 .visual-section .vertical-item.info .dday .ib:before{position:absolute; left:0; bottom:0;}
+
+</style>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+<script>
+$(document).on("ready", function(){
+	$("body").append("<div id='menu-overlay'></div>");
+
+	// 비주얼 영역 높이값 설정
+	var hei = $(window).innerHeight();
+	$(".visual-section.h-100").css("height", hei);
+
+	// dim click
+    $("#menu-overlay").click(function(){
+        if($(this).hasClass("pop-on")){
+            var id = $(this).data("pop-id");
+            $(this).removeClass("pop-on").removeAttr("data-pop-id").removeData().fadeOut(100);
+            $("#"+id+"").removeClass("pop-on").fadeOut(100);
+        }
+	});
+
+	fontReSize();
+});
+
+$(window).on('load', function(){
+	// 비주얼 영역 높이값 설정
+	var w = $(window).innerWidth(),
+		h = $(window).innerHeight();
+	$(".visual-section.h-100").css("height", h);
+
+	fontReSize();
+});
+
+function fontReSize() { // 스크롤바 있으면 size 변경
+	if(window.innerWidth < 720){
+		var scrollBarWidth = window.innerWidth - document.body.clientWidth;
+		scrollBarWidth != 0 ? $("html").css({"font-size":"4.205vmin"}) : null;
+	}
+}
+
+function scrollFixed() { // 스크롤 Fixed
+	var isTablet = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|Windows Phone)/);
+	var ovY;
+	!isTablet === true ? (ovY = "scroll") : (ovY = "hidden");
+
+	$("html").css({
+		overflow : "hidden",
+		"overflow-y" : ovY,
+		position : "fixed",
+		width : "100%",
+		top : -$(window).scrollTop()
+	});
+}
+
+function scrollAuto() {  // 스크롤 Auto
+	var hTop = $("html").css("top");
+	var hTop_2 = hTop.split("px");
+	var winTop = Math.abs(hTop_2[0]);
+
+	$("html").removeAttr("style");
+	window.scrollTo(0, winTop);
+}
+
+function popOpen(padding, id) { // 팝업 열기 onclick
+	// scrollFixed();
+	// dim
+	$("#menu-overlay")
+	.addClass("pop-on")
+	.attr("data-pop-id", id)
+	.fadeIn(300);
+
+	$("#"+id+"")
+	.css({"padding": ""+padding+"", "margin-top": -$("#"+id+"")
+	.outerHeight()/2})
+	.addClass("pop-on")
+	.fadeIn(300);
+}
+
+function popClose(id) { // 팝업 닫기 onclick
+	// scrollAuto();
+	// dim click
+	$("#menu-overlay[data-pop-id="+id+"]")
+	.removeClass("pop-on")
+	.removeAttr("data-pop-id")
+	.removeData()
+	.fadeOut(100);
+
+	$("#"+id+"")
+	.removeClass("pop-on")
+	.fadeOut(100);
+}
+
+</script>
+
+</head>
+<body class="mthank_17">
+	<div class="wrapper">
+
+		<section id="content">
+
+			<!--// 비주얼 -->
+			<section class="visual-section">
+				<div class="vertical-top">
+					<div class="vertical-item tit">
+						<img src="/mobile/new_m/mthank/images/mthank_17/visual_tit.png" alt="">
+					</div>
+					<div class="vertical-item photo">
+						<img src="/mobile/new_m/mthank/images/mthank_17/visual_01.jpg" alt="">
+					</div>
+					<div class="vertical-item con">
+						<div class="info">
+							<p class="p1">
+								<span class="vs-span">이지훈</span>
+								<span class="vs-span bar"></span>
+								<span class="vs-span">유수진</span>
+							</p>
+							<p class="p2">
+								<span class="vs-span">
+									서로 존중하고 배려하면서<br>
+									예쁘게 잘 살겠습니다.
+								</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- 비주얼 //-->
+
+			<!--// 인사말 -->
+			<section class="greeting-section">
+				<div class="sec-tit">진심으로 감사드립니다.</div>
+				<div class="sec-txt">특별한날, 소중한 시간을
+함께 해주셔서 감사드립니다.
+서로가 마주보며 다져온 사랑을
+이제 함께 한 곳을 바라보며
+큰 사랑으로 키우겠습니다.
+항상 귀댁의 평안과 모든 일에
+축복이 가득하길 기원합니다.
+
+감사합니다.</div>
+				<div class="info">
+					<div class="f-item first">
+						<div class="tb">
+							<div class="row">
+								<p class="honju">
+									<span class="gt-span">이석훈</span>
+									<span class="gt-span bul"></span>
+									<span class="gt-span">이미자</span>
+								</p>
+								<p class="default">의</p>
+								<p class="gwangye">장남</p>
+								<p class="slsb">지훈</p>
+							</div>
+							<div class="row">
+								<p class="honju">
+									<span class="gt-span">유성령</span>
+									<span class="gt-span bul"></span>
+									<span class="gt-span">박효순</span>
+								</p>
+								<p class="default">의</p>
+								<p class="gwangye">장녀</p>
+								<p class="slsb">수진</p>
+							</div>
+						</div>
+					</div>
+					<div class="f-item">
+						<span class="s1" style="background-color:#cfad65;">드림</span>
+					</div>
+				</div>
+			</section>
+			<!-- 인사말 //-->
+
+		<!--// 푸터 -->
+<footer id="footer">
+    <div class="foot-share">
+        <ul class="foot-share-list">
+            <li>
+                <a href="#" class="kakao">
+                    카카오톡<br> 공유하기
+                </a>
+            </li>
+            <li>
+                <a href="#" class="facebook">
+                    페이스북<br> 공유하기
+                </a>
+            </li>
+            <!-- <li>
+                <a href="#" class="Phone_2g">
+                    2G폰<br> 공유하기
+                </a>
+            </li> -->
+        </ul>
+    </div>
+    <div class="foot-logo">
+        it`s card
+    </div>
+</footer>
+<!-- 푸터 //-->
+	</div>
+
+	<script>
+
+	</script>
+
+</body>
+</html>
