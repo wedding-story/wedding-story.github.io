@@ -44,7 +44,9 @@
 
 /* Home Page Style */
 .ww-home-page {
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../images/photo27.jpg") no-repeat center center;
+	background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+	background-image: url("../images/photo27.jpg");
+	/*  no-repeat center center */
     background-size: cover;
     background-position: 50%;
     height: 100vh;
@@ -355,7 +357,7 @@ body{background:url("../images/common/bg_white.jpg") 0 0 repeat-y; background-si
 
 /* 공통 레이아웃 */
 .music{
-	z-index:900;
+	z-index: 100;
     position: fixed;
     width: 40px;
 	left:1rem; top:1rem;

@@ -50,7 +50,7 @@ https://map.kakao.com/?urlX=507282.0&urlY=1107203.0&name=KW%EC%BB%A8%EB%B2%A4%EC
 </div>
 <div class="page-content">
 
-    <div class="ww-home-page" id="home">
+    <div class="ww-home-page" id="home" style="background-image:url(/jinju-junseok/images/home_bg/img_0.jpeg);">
         <div class="ww-wedding-announcement d-flex align-items-center justify-content-start">
             <div class="container ww-announcement-container">
                 <p class="ww-couple-name ww-title" style="width: 100%; position: absolute; top: 5%; left: 50%; transform: translateX(-50%);">Junseok & Jinju</p>
@@ -65,7 +65,7 @@ https://map.kakao.com/?urlX=507282.0&urlY=1107203.0&name=KW%EC%BB%A8%EB%B2%A4%EC
     <!--// 인사말 -->
     <section class="greeting-section">
         <div class="sec-tit">" 이제 서로, 평생 함께 "</div>
-        <div class="sec-txt">평생을 같이하고 싶은<br />사람을 만났습니다.<br />서로 아껴주고 이해하며<br />사랑 베풀며 사고 싶습니다.<br />저희 약속 위에 따뜻한<br />격려로 축복해 주셔서<br />힘찬 출발의<br />디딤이 되어 주십시오.</div>
+        <div class="sec-txt">평생을 같이하고 싶은<br />사람을 만났습니다.<br />서로 아껴주고 이해하며<br />사랑 베풀며 살고 싶습니다.<br />저희 약속 위에 따뜻한<br />격려로 축복해 주셔서<br />힘찬 출발의<br />디딤이 되어 주십시오.</div>
         <div class="info">
             <div class="ib">
                 <div class="tb">
@@ -241,7 +241,6 @@ https://map.kakao.com/?urlX=507282.0&urlY=1107203.0&name=KW%EC%BB%A8%EB%B2%A4%EC
 
 <script type="text/javascript">
 var _EL = {};
-// const _BGM = document.getElementById("BGM"); //new Audio('https://www.itscard.co.kr/music/bgm1.mp3'); //Audio("/jinju-junseok/images/common/meet_him_among_them.mp3");
 
 var isMobile = {
     Android: function () {
@@ -269,6 +268,7 @@ $(function() {
     _EL.galleryList = $('#gallery-list');
     _EL.galleryPop = $('#pop-gallery');
     _EL.BGM = document.getElementById("BGM");
+    _EL.home = $("#home");
 
     $('#btn-music').on('click', function(e) {
         e.preventDefault();
@@ -330,15 +330,25 @@ $(function() {
         location.href = "kakaomap://place?id=1909075253";
     });
 
+
+    var home_bg_num = 0;
+    setInterval(function() {
+        console.log('st', home_bg_num);
+        _EL.home.animate({opacity: 0.4}, function() {
+            $("#home").css({"background-image": "url(/jinju-junseok/images/home_bg/img_"+ home_bg_num +".jpeg)"});
+            $(this).animate({opacity: 1});
+        });
+        home_bg_num = (home_bg_num < 5) ? home_bg_num + 1 : 0;
+    }, 5000);
 });
 
 function initGallery() {
     var list = '';
     var pop = '';
-    for(var i = 1; i <= 30; i++) {
-        list += '<li data-num="'+ i +'"><div class="box" style="background-image:url(/jinju-junseok/images/photo'+ i +'.jpg);"></div></li>';
-        pop += '<li data-thumb="/jinju-junseok/images/photo'+ i +'.jpg">';
-        pop += '<div class="box"><div class="pos"><div class="cen"><img src="/jinju-junseok/images/photo'+ i +'.jpg" /></div></div></div>';
+    for(var i = 1; i <= 6; i++) {
+        list += '<li data-num="'+ i +'"><div class="box" style="background-image:url(/jinju-junseok/images/gallery/img_'+ i +'.jpeg);"></div></li>';
+        pop += '<li data-thumb="/jinju-junseok/images/gallery/img_'+ i +'.jpeg">';
+        pop += '<div class="box"><div class="pos"><div class="cen"><img src="/jinju-junseok/images/gallery/img_'+ i +'.jpeg" /></div></div></div>';
         pop += '</li>';
     }
 
