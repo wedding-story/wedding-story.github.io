@@ -1450,7 +1450,7 @@ body{background:url("../images/common/bg_white.jpg") 0 0 repeat-y; background-si
 #layer-full-bg { display: none; position: absolute; top: 0; left: 0; z-index: 998; background-color: #000; opacity: 0.9; width: 100vw; height: 100vh;}
 #vlayer-full-wrap { display: none; position: absolute; text-align: center; color: #fff; font-size: 2em; z-index: 999; background-color: transparent; opacity: 1; /* writing-mode: vertical-rl; */}
 #vlayer-content {position: absolute; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0);}
-#vlayer-content h2 {margin: 10px auto;}
+#vlayer-content h3 {padding: 10px auto;}
 .btn-vlayer-close {position: absolute; }
 
 /* 세로 모드 */
