@@ -62,9 +62,8 @@ https://map.kakao.com/?urlX=507282.0&urlY=1107203.0&name=KW%EC%BB%A8%EB%B2%A4%EC
                     <b>2020. 07. 18. SAT PM 12:00</b>
                     <br />아리랑웰스 센터 4층 연우웨딩 & 파티
                 </p>
-                <div style="position: absolute; z-index: 3; bottom: 5px; padding: 0 4px; border-radius: 5px; background-color: #6a6a6a; opacity: 0.5; width: 94%; height: 32px; left: 3%">
-                </div>
-                <div id="btn-show-bankAccount" style="position: absolute; opacity: 1; z-index: 5; font-size: 1.0em; font-weight: 800; width: 90%; height: 32px; bottom: 5px;">농협(길기천) 352-1700-7398-93</div>
+                <div class="top-bank-account-bg"></div>
+                <div id="btn-show-bankAccount">농협(길기천) 352-1700-7398-93</div>
             </div>
         </div>
     </div>
@@ -262,6 +261,18 @@ https://map.kakao.com/?urlX=507282.0&urlY=1107203.0&name=KW%EC%BB%A8%EB%B2%A4%EC
 
 </body>
 
+<style>
+@media (orientation: landscape) {
+    body {width: 100vw;}
+    .top-bank-account-bg {position: absolute; z-index: 3; bottom: 5px; padding: 0 4px; border-radius: 5px; background-color: #6a6a6a; opacity: 0.5; width: 94%; height: 42px; left: 3%; }
+    #btn-show-bankAccount {position: absolute; opacity: 1; z-index: 5; font-size: 1.0em; font-weight: 800; width: 90%; height: 32px; bottom: 5px; left: 3%;}
+    #vlayer-full-wrap { top: 0; left: 100%; text-align: center; z-index: 999; background-color: transparent; opacity: 1; width: 100vh; height: 100vw; color: #fff; font-size: 2em; transform: rotate(90deg); -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); transform-origin: left top; font-family: 'Apple SD Gothic NEO',helvetica,sans-serif!important;/* writing-mode: vertical-rl; */}
+    #vlayer-content {position: absolute; width: 100vh; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0);}
+    .btn-vlayer-close {position: absolute; }
+    .btn-vlayer-close.top {transform: rotate(-90deg); top: 0; left: 25px;}
+    .btn-vlayer-close.bottom {bottom: 15px; left: 90%; font-size: 0.6em; padding: 2px 10px; /* background-color: #3a3a3a; */ border-radius: 5px;}
+}
+</style>
 <script type="text/javascript">
 var vConsole = new VConsole();
 
@@ -395,26 +406,27 @@ $(function() {
 
 
 
+    /*
 
     screen.lockOrientationUniversal = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation;
-
-    screen.addEventListener("orientationchange", function () {
-        console.log("The orientation of the screen is: " + screen.orientation);
-    });
     console.log("The orientation of the screen is: " + screen.orientation);
 
     window.onorientationchange = function() {
-        console.log('window.onorientationchange ', window.orientation);
+        console.log('window.onorientationchange function ', window.orientation);
+        console.log('lockOrientationUniversal function ', screen.lockOrientationUniversal);
     }
     console.log('window.onorientationchange ', window.orientation);
+    console.log('lockOrientationUniversal ', screen.lockOrientationUniversal);
+
+    */
 
 
     // mobile roate - disable horizontal
-    $(window).on('orientationchange resize', function(e){
+    $(window).on('orientationchange', function(e){
         e.preventDefault();
+        fun_orientation();
 
-        var orientation = window.screen.orientation;
-        console.log('orientation ', orientation);
+        /*
         if (orientation && orientation == 'landscape') {
             if (orientation.angle == 90) {
                 rotate(this, -90);
@@ -424,29 +436,48 @@ $(function() {
                 console.log('ratate else ', this);
             }
         }
+        */
         console.log('screen ', screen);
-        if ( 'orientation' in screen ) {
+        /* if ( 'orientation' in screen ) {
             var locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation;
             locOrientation('landscape');
-        }
+        } */
     });
 
-    function rotate(el, degs) {
-        iedegs = degs/90;
-        if (iedegs < 0) iedegs += 4;
-        transform = 'rotate('+degs+'deg)';
-        iefilter = 'progid:DXImageTransform.Microsoft.BasicImage(rotation='+iedegs+')';
-        styles = {
-            transform: transform,
-            '-webkit-transform': transform,
-            '-moz-transform': transform,
-            '-o-transform': transform,
-            filter: iefilter,
-            '-ms-filter': iefilter
-        };
-        $(el).css(styles);
-    }
+    fun_orientation();
+
 });
+
+function fun_orientation() {
+    if(window.orientation==0) {
+        console.log('orientation 세로 모드');
+    } else if(window.orientation==90) {
+        console.log('orientation 가로 모드');
+    }
+
+    var locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock;
+    console.log('locOrientation', locOrientation);
+
+    console.log('fun_orientation ', window.orientation);
+    console.log('window.screen.orientation ', window.screen.orientation);
+}
+
+/* https://www.it-swarm.dev/ko/javascript/%EB%AA%A8%EB%B0%94%EC%9D%BC-%EC%9B%B9-%ED%8E%98%EC%9D%B4%EC%A7%80%EC%97%90%EC%84%9C-%EC%9E%A5%EC%B9%98-%ED%9A%8C%EC%A0%84-%EC%B0%A8%EB%8B%A8/969205606/ */
+function rotate(el, degs) {
+    var iedegs = degs/90;
+    if (iedegs < 0) iedegs += 4;
+    var transform = 'rotate('+degs+'deg)';
+    var iefilter = 'progid:DXImageTransform.Microsoft.BasicImage(rotation='+iedegs+')';
+    var styles = {
+        transform: transform,
+        '-webkit-transform': transform,
+        '-moz-transform': transform,
+        '-o-transform': transform,
+        filter: iefilter,
+        '-ms-filter': iefilter
+    };
+    $(el).css(styles);
+}
 
 function initGallery() {
     var list = '';

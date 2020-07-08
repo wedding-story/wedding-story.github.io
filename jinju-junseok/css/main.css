@@ -1443,7 +1443,8 @@ body{background:url("../images/common/bg_white.jpg") 0 0 repeat-y; background-si
 
 
 
-
+.top-bank-account-bg {position: absolute; z-index: 3; bottom: 5px; padding: 0 4px; border-radius: 5px; background-color: #6a6a6a; opacity: 0.5; width: 94%; height: 32px; left: 3%; }
+#btn-show-bankAccount {position: absolute; opacity: 1; z-index: 5; font-size: 1.0em; font-weight: 800; width: 90%; height: 32px; bottom: 5px; left: 3%}
 .scroll-none {width: 100vw; height: 100vh; overflow: hidden;}
 #layer-full-bg { display: none; position: absolute; top: 0; left: 0; z-index: 998; background-color: #000; opacity: 0.9; width: 100vw; height: 100vh;}
 #vlayer-full-wrap { display: none; position: absolute; top: 0; left: 100%; text-align: center; z-index: 999; background-color: transparent; opacity: 1; width: 100vh; height: 100vw; color: #fff; font-size: 2em; transform: rotate(90deg); -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); transform-origin: left top; font-family: 'Apple SD Gothic NEO',helvetica,sans-serif!important;/* writing-mode: vertical-rl; */}
