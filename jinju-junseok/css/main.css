@@ -1465,8 +1465,7 @@ body{background:url("../images/common/bg_white.jpg") 0 0 repeat-y; background-si
 /* 가로 모드 */
 @media (orientation: landscape) {
 	.ww-text { bottom: 10px; }
-	#layer-full-bg {display: block;}
-	#vlayer-full-wrap {display: block; top: 0; left: 0; width: 100vw; height: 100vh; color: #fff; font-size: 2em; }
+	#vlayer-full-wrap {top: 0; left: 0; width: 100vw; height: 100vh; color: #fff; font-size: 2em; }
 	#vlayer-content { width: 100vw; }
 	.btn-vlayer-close {position: absolute; }
 	#vlayer-content h2 {font-size: 0.7em;}
