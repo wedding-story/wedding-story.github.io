@@ -393,15 +393,25 @@ $(function() {
         $("body").removeClass('scroll-none');
     });
 
+    screen.lockOrientationUniversal = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation;
+
+    screen.addEventListener("orientationchange", function () {
+        console.log("The orientation of the screen is: " + screen.orientation);
+    });
+
+    window.onorientationchange = function() {
+        console.log('window.onorientationchange ', window.orientation);
+    }
 
 
     // mobile roate - disable horizontal
-    $(window).on('orientationchange resize', function(event){
-        console.log('event ', event);
+    $(window).on('orientationchange resize', function(e){
+        e.preventDefault();
+
         var orientation = window.screen.orientation;
         console.log('orientation ', orientation);
-        if (event.orientation && event.orientation == 'landscape') {
-            if (window.rotation == 90) {
+        if (orientation && orientation == 'landscape') {
+            if (orientation.angle == 90) {
                 rotate(this, -90);
                 console.log('ratate if ', this);
             } else {
@@ -411,7 +421,7 @@ $(function() {
         }
         console.log('screen ', screen);
         if ( 'orientation' in screen ) {
-            var locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock;
+            var locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation;
             locOrientation('landscape');
         }
     });
