@@ -393,15 +393,20 @@ $(function() {
         $("body").removeClass('scroll-none');
     });
 
+
+
+
     screen.lockOrientationUniversal = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation;
 
     screen.addEventListener("orientationchange", function () {
         console.log("The orientation of the screen is: " + screen.orientation);
     });
+    console.log("The orientation of the screen is: " + screen.orientation);
 
     window.onorientationchange = function() {
         console.log('window.onorientationchange ', window.orientation);
     }
+    console.log('window.onorientationchange ', window.orientation);
 
 
     // mobile roate - disable horizontal
