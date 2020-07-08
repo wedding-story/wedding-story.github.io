@@ -1450,4 +1450,4 @@ body{background:url("../images/common/bg_white.jpg") 0 0 repeat-y; background-si
 #vlayer-content {position: absolute; width: 100vh; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0);}
 .btn-vlayer-close {position: absolute; }
 .btn-vlayer-close.top {transform: rotate(-90deg); top: 0; left: 25px;}
-.btn-vlayer-close.bottom {bottom: 15px; right: 15px; font-size: 0.6em; padding: 2px 10px; /* background-color: #3a3a3a; */ border-radius: 5px;}
+.btn-vlayer-close.bottom {bottom: 15px; left: 90%; font-size: 0.6em; padding: 2px 10px; /* background-color: #3a3a3a; */ border-radius: 5px;}
