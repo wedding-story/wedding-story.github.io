@@ -161,7 +161,8 @@
 
 /* Common Style */
 .ww-title {
-    font-family: "Great Vibes", cursive;
+	font-family: "Great Vibes", cursive;
+	width: 100%; position: absolute; top: 5%; left: 50%; transform: translateX(-50%);
 }
 
 .ww-section {
@@ -1441,14 +1442,33 @@ body{background:url("../images/common/bg_white.jpg") 0 0 repeat-y; background-si
 }
 
 
+.ww-text { width: 100%; position: absolute; top: 85%; left: 50%; transform: translateX(-50%); font-size: 0.9em }
 
-
-.top-bank-account-bg {position: absolute; z-index: 3; bottom: 5px; padding: 0 4px; border-radius: 5px; background-color: #6a6a6a; opacity: 0.5; width: 94%; height: 32px; left: 3%; }
-#btn-show-bankAccount {position: absolute; opacity: 1; z-index: 5; font-size: 1.0em; font-weight: 800; width: 90%; height: 32px; bottom: 5px; left: 3%}
+.top-bank-account-bg {position: absolute; z-index: 3; padding: 0 4px; border-radius: 5px; background-color: #6a6a6a; opacity: 0.5; width: 94%; left: 50%; transform: translateX(-50%); font-size: 1.0em; font-weight: 800; max-width: 720px;}
+#btn-show-bankAccount {position: absolute; opacity: 1; z-index: 5; font-size: 1.0em; font-weight: 800; width: 90%; left: 50%; transform: translateX(-50%); max-width: 720px; text-align: center; color: #fff;}
 .scroll-none {width: 100vw; height: 100vh; overflow: hidden;}
 #layer-full-bg { display: none; position: absolute; top: 0; left: 0; z-index: 998; background-color: #000; opacity: 0.9; width: 100vw; height: 100vh;}
-#vlayer-full-wrap { display: none; position: absolute; top: 0; left: 100%; text-align: center; z-index: 999; background-color: transparent; opacity: 1; width: 100vh; height: 100vw; color: #fff; font-size: 2em; transform: rotate(90deg); -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); transform-origin: left top; font-family: 'Apple SD Gothic NEO',helvetica,sans-serif!important;/* writing-mode: vertical-rl; */}
-#vlayer-content {position: absolute; width: 100vh; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0);}
+#vlayer-full-wrap { display: none; position: absolute; text-align: center; color: #fff; font-size: 2em; z-index: 999; background-color: transparent; opacity: 1; /* writing-mode: vertical-rl; */}
+#vlayer-content {position: absolute; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0);}
+#vlayer-content h2 {margin: 10px auto;}
 .btn-vlayer-close {position: absolute; }
-.btn-vlayer-close.top {transform: rotate(-90deg); top: 0; left: 25px;}
-.btn-vlayer-close.bottom {bottom: 15px; left: 90%; font-size: 0.6em; padding: 2px 10px; /* background-color: #3a3a3a; */ border-radius: 5px;}
+
+/* 세로 모드 */
+@media (orientation: portrait) {
+	.top-bank-account-bg {bottom: 5px;}
+	#btn-show-bankAccount {bottom: 5px;}
+	#vlayer-full-wrap {top: 0; left: 100%; width: 100vh; height: 100vw; transform: rotate(90deg); -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); transform-origin: left top; }
+	#vlayer-content {width: 100vh;}
+	.btn-vlayer-close.top {transform: rotate(-90deg); top: 0; left: 25px;}
+	.btn-vlayer-close.bottom {bottom: 15px; right: 20px; font-size: 0.6em; padding: 2px 10px; border-radius: 5px;}
+}
+/* 가로 모드 */
+@media (orientation: landscape) {
+	.ww-text { top: 96%; }
+	#layer-full-bg {display: block;}
+	#vlayer-full-wrap {display: block; top: 0; left: 0; width: 100vw; height: 100vh; color: #fff; font-size: 2em; }
+	#vlayer-content { width: 100vw; }
+	.btn-vlayer-close {position: absolute; }
+	.btn-vlayer-close.top {top: 0; left: 20px; font-size: 0.6em;}
+	.btn-vlayer-close.bottom {width: 100px; bottom: 10px; right: 10px; font-size: 0.5em; padding: 2px 10px; background-color: #3a3a3a; border-radius: 5px;}
+}

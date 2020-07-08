@@ -31,7 +31,7 @@ https://map.kakao.com/?urlX=507282.0&urlY=1107203.0&name=KW%EC%BB%A8%EB%B2%A4%EC
 <link href='https://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 <link href="css/lightSlider.css" rel='stylesheet' type='text/css'>
-<link href='css/main.css?v=1.1' rel='stylesheet' type='text/css'>
+<link href='css/main.css?v=1.1.6' rel='stylesheet' type='text/css'>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
@@ -45,9 +45,30 @@ https://map.kakao.com/?urlX=507282.0&urlY=1107203.0&name=KW%EC%BB%A8%EB%B2%A4%EC
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=sc3fpl1fi1"></script>
 <!--<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=b1e2f96e4b28969f92cd4060ab938851"></script>-->
 
+
+<style>
+    @media (orientation: portrait) {
+        .top-bank-account-bg {bottom: 5px;}
+        #btn-show-bankAccount {bottom: 5px;}
+        #vlayer-full-wrap {top: 0; left: 100%; width: 100vh; height: 100vw; transform: rotate(90deg); -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); transform-origin: left top; }
+        #vlayer-content {width: 100vh;}
+        .btn-vlayer-close.top {transform: rotate(-90deg); top: 0; left: 25px;}
+        .btn-vlayer-close.bottom {bottom: 15px; right: 20px; font-size: 0.6em; padding: 2px 10px; border-radius: 5px;}
+    }
+    /* 가로 모드 */
+    @media (orientation: landscape) {
+        .ww-text { top: 96%; }
+        #layer-full-bg {display: block;}
+        #vlayer-full-wrap {display: block; top: 0; left: 0; width: 100vw; height: 100vh; color: #fff; font-size: 2em; }
+        #vlayer-content { width: 100vw; }
+        .btn-vlayer-close {position: absolute; }
+        .btn-vlayer-close.top {top: 0; left: 20px; font-size: 0.6em;}
+        .btn-vlayer-close.bottom {width: 100px; bottom: 10px; right: 10px; font-size: 0.5em; padding: 2px 10px; background-color: #3a3a3a; border-radius: 5px;}
+    }
+    </style>
 </head>
 
-<body>
+<body class="scroll-none">
 
 <div class="music">
     <img id="btn-music" src="/jinju-junseok/images/common/music_01_off.png" data-switch="off" />
@@ -57,16 +78,17 @@ https://map.kakao.com/?urlX=507282.0&urlY=1107203.0&name=KW%EC%BB%A8%EB%B2%A4%EC
     <div class="ww-home-page" id="home" style="background-image:url(/jinju-junseok/images/home_bg/img_0.jpeg);">
         <div class="ww-wedding-announcement d-flex align-items-center justify-content-start">
             <div class="container ww-announcement-container">
-                <p class="ww-couple-name ww-title" style="width: 100%; position: absolute; top: 5%; left: 50%; transform: translateX(-50%);">Junseok & Jinju</p>
-                <p style="width: 100%; position: absolute; top: 85%; left: 50%; transform: translateX(-50%); font-size: 0.9em">
+                <p class="ww-couple-name ww-title">Junseok & Jinju</p>
+                <p class="ww-text">
                     <b>2020. 07. 18. SAT PM 12:00</b>
                     <br />아리랑웰스 센터 4층 연우웨딩 & 파티
                 </p>
-                <div class="top-bank-account-bg"></div>
-                <div id="btn-show-bankAccount">농협(길기천) 352-1700-7398-93</div>
             </div>
         </div>
     </div>
+
+    <div class="top-bank-account-bg">&nbsp;</div>
+    <div id="btn-show-bankAccount">농협(길기천) 352-1700-7398-93</div>
 
     <!--// 인사말 -->
     <section class="greeting-section">
@@ -250,7 +272,8 @@ https://map.kakao.com/?urlX=507282.0&urlY=1107203.0&name=KW%EC%BB%A8%EB%B2%A4%EC
 <div id="vlayer-full-wrap">
     <div class="btn-vlayer-close top">X</div>
     <div id="vlayer-content">
-        <h2>계좌번호안내 (예금주: 길기천)<br /><br />농협 352-1700-7398-93</h2>
+        <h2>계좌번호안내 (예금주: 길기천)</h2>
+        <h2>농협 352-1700-7398-93</h2>
     </div>
     <div class="btn-vlayer-close bottom">닫기</div>
 </div>
@@ -261,18 +284,6 @@ https://map.kakao.com/?urlX=507282.0&urlY=1107203.0&name=KW%EC%BB%A8%EB%B2%A4%EC
 
 </body>
 
-<style>
-@media (orientation: landscape) {
-    body {width: 100vw;}
-    .top-bank-account-bg {position: absolute; z-index: 3; bottom: 5px; padding: 0 4px; border-radius: 5px; background-color: #6a6a6a; opacity: 0.5; width: 94%; height: 42px; left: 3%; }
-    #btn-show-bankAccount {position: absolute; opacity: 1; z-index: 5; font-size: 1.0em; font-weight: 800; width: 90%; height: 32px; bottom: 5px; left: 3%;}
-    #vlayer-full-wrap { top: 0; left: 100%; text-align: center; z-index: 999; background-color: transparent; opacity: 1; width: 100vh; height: 100vw; color: #fff; font-size: 2em; transform: rotate(90deg); -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); transform-origin: left top; font-family: 'Apple SD Gothic NEO',helvetica,sans-serif!important;/* writing-mode: vertical-rl; */}
-    #vlayer-content {position: absolute; width: 100vh; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0);}
-    .btn-vlayer-close {position: absolute; }
-    .btn-vlayer-close.top {transform: rotate(-90deg); top: 0; left: 25px;}
-    .btn-vlayer-close.bottom {bottom: 15px; left: 90%; font-size: 0.6em; padding: 2px 10px; /* background-color: #3a3a3a; */ border-radius: 5px;}
-}
-</style>
 <script type="text/javascript">
 var vConsole = new VConsole();
 
