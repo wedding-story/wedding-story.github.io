@@ -409,6 +409,11 @@ $(function() {
                 console.log('ratate else ', this);
             }
         }
+        console.log('screen ', screen);
+        if ( 'orientation' in screen ) {
+            var locOrientation = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.orientation.lock;
+            locOrientation('landscape');
+        }
     });
 
     function rotate(el, degs) {
