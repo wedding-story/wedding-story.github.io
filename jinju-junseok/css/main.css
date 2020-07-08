@@ -1450,7 +1450,7 @@ body{background:url("../images/common/bg_white.jpg") 0 0 repeat-y; background-si
 #layer-full-bg { display: none; position: absolute; top: 0; left: 0; z-index: 998; background-color: #000; opacity: 0.9; width: 100vw; height: 100vh;}
 #vlayer-full-wrap { display: none; position: absolute; text-align: center; color: #fff; font-size: 2em; z-index: 999; background-color: transparent; opacity: 1; /* writing-mode: vertical-rl; */}
 #vlayer-content {position: absolute; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0);}
-#vlayer-content h3 {padding: 10px auto;}
+#vlayer-content h2 {padding: 10px auto;}
 .btn-vlayer-close {position: absolute; }
 
 /* 세로 모드 */
@@ -1469,6 +1469,7 @@ body{background:url("../images/common/bg_white.jpg") 0 0 repeat-y; background-si
 	#vlayer-full-wrap {display: block; top: 0; left: 0; width: 100vw; height: 100vh; color: #fff; font-size: 2em; }
 	#vlayer-content { width: 100vw; }
 	.btn-vlayer-close {position: absolute; }
+	#vlayer-content h2 {font-size: 0.7em;}
 	.btn-vlayer-close.top {top: 0; left: 20px; font-size: 0.6em;}
 	.btn-vlayer-close.bottom {width: 100px; bottom: 10px; right: 10px; font-size: 0.5em; padding: 2px 10px; background-color: #3a3a3a; border-radius: 5px;}
 }
