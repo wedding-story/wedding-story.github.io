@@ -69,7 +69,7 @@
     width: 100%;
     padding: 0 5%;
     text-align: center;
-    z-index: 999;
+    z-index: 100;
 }
 
 .ww-home-page .ww-wedding-announcement img {
@@ -236,9 +236,9 @@
 *:befroe{box-sizing:border-box;}
 html, body {width:100%;height:100%;}
 html {font-size:62.5%;overflow-y:scroll;}
-body {margin:0;padding:0;font-size:1.2rem;line-height:1.5;color:#111;word-wrap:break-word;word-break:break-all;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+body {margin:0;padding:0;font-size:1.2rem;line-height:1.5;color:#111;word-wrap:break-word;word-break:break-all;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:rgba(0,0,0,0); font-family: '굴림',gulim,helvetica,'나눔바른고딕 옛한글','NanumBarunGothic YetHangul','새굴림',sans-serif;}
 html, body, blockquote, caption, dd, div, dl, dt, fieldset, form, frame, h1, h2, h3, h4, h5, h6, hr,
-iframe, input, legend, li, object, ol, p, pre, q, select, table, textarea, ul, tr, td, span { margin:0; padding:0; font-family:'Nanum Myeongjo', 'Nanum Gothic', sans-serif, 'helvetica', serif, 'AppleGothic'; }
+iframe, input, legend, li, object, ol, p, pre, q, select, table, textarea, ul, tr, td, span { margin:0; padding:0; /* font-family:'Nanum Myeongjo', 'Nanum Gothic', sans-serif, 'helvetica', serif, 'AppleGothic'; */}
 fieldset, img { border:0 none; vertical-align:top; }
 h1, h2, h3, h4, h5, h6 { font-style:normal;}
 hr { display:none; height:0}
@@ -1439,3 +1439,15 @@ body{background:url("../images/common/bg_white.jpg") 0 0 repeat-y; background-si
 	background:url("/jinju-junseok/images/common/wedding_day.png") center bottom 1px no-repeat;
 	background-size:5.5rem auto;
 }
+
+
+
+
+
+.scroll-none {width: 100vw; height: 100vh; overflow: hidden;}
+#layer-full-bg { display: none; position: absolute; top: 0; left: 0; z-index: 998; background-color: #000; opacity: 0.9; width: 100vw; height: 100vh;}
+#vlayer-full-wrap { display: none; position: absolute; top: 0; left: 100%; text-align: center; z-index: 999; background-color: transparent; opacity: 1; width: 100vh; height: 100vw; color: #fff; font-size: 2em; transform: rotate(90deg); -webkit-transform: rotate(90deg); -moz-transform: rotate(90deg); transform-origin: left top; font-family: 'Apple SD Gothic NEO',helvetica,sans-serif!important;/* writing-mode: vertical-rl; */}
+#vlayer-content {position: absolute; width: 100vh; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0);}
+.btn-vlayer-close {position: absolute; }
+.btn-vlayer-close.top {transform: rotate(-90deg); top: 0; left: 25px;}
+.btn-vlayer-close.bottom {bottom: 15px; right: 15px; font-size: 0.6em; padding: 2px 10px; /* background-color: #3a3a3a; */ border-radius: 5px;}
